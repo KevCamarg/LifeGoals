@@ -1,0 +1,55 @@
+
+<div class="home-container">
+
+  <header class="home-header">
+    <h1>LifeGoals</h1>
+    <p>Organiza tus metas y trabaja para cumplirlas.</p>
+  </header>
+
+  <section class="meta-form">
+    <h2>Agregar una meta</h2>
+
+    <form (ngSubmit)="agregarMeta()">
+      <input
+        type="text"
+        name="meta"
+        [(ngModel)]="nuevaMeta"
+        placeholder="Escribe tu nueva meta..."
+        required
+      />
+
+      <button type="submit" class="btn-agregar">
+        <span>+</span> Agregar meta
+      </button>
+    </form>
+  </section>
+
+  <section class="meta-list">
+    <h2>Mis metas</h2>
+
+    <div *ngIf="metas.length === 0" class="empty-state">
+      <p>Aún no tienes metas registradas.</p>
+      <span>¡Agrega tu primera meta para comenzar!</span>
+    </div>
+
+    <ul *ngIf="metas.length > 0">
+      <li *ngFor="let item of metas" class="meta-item">
+        <div class="meta-info">
+          <span class="meta-icon">✓</span>
+          <span class="meta-text">{{ item.meta }}</span>
+        </div>
+
+        <button
+          *ngIf="item.id"
+          type="button"
+          class="btn-eliminar"
+          (click)="eliminarMeta(item.id!)"
+          aria-label="Eliminar meta"
+        >
+          Eliminar
+        </button>
+      </li>
+    </ul>
+  </section>
+
+</div>
