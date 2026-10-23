@@ -1,4 +1,4 @@
-name: Angular_DockerImage
+name: Angular_DockerImage2
 
 on:
   push:
